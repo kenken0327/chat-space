@@ -39,10 +39,10 @@
         .message__text
           test-text
     .form
-      %form.new_message{:action => "/", :method => ""}
+      %form.new_message{action: "/", method: ""}
         .input-box
-          %input.input-box__text{:placeholder => "type a message", :type => "text"}
+          %input.input-box__text{placeholder: "type a message", type: "text"}
           %label.input-box__image{for: "message_image"}
             %i.fa.fa-image
-            %input.input-box__image__file{ :type => "file", :id => "message_image"}
-        %input.submit-btn{ :type => "submit", :name => "commit", :value => "Send"}
+            %input.input-box__image__file{ type: "file", id: "message_image"}
+        %input.submit-btn{ type: "submit", name: "commit", value: "Send"}
