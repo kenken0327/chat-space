@@ -32,13 +32,13 @@
     height: calc(100vh - 100px);
     padding: 20px 20px 0;
     overflow: scroll;
-    &__group{
+    .group{
       margin-bottom: 40px;
-      &__group-name{
+      &__name{
         font-size: 15px;
         margin-bottom: 5px;
       }
-      &__latest-message{
+      &__message{
         font-size: 11px;
       }
     }
@@ -133,19 +133,19 @@
           &__file{
             display: none;
           }
-          }
         }
+      }
       .submit-btn{
         width: 100px;
-        height: 50ox;
+        height: 50px;
         background-color: #38aefd;
         color: white;
         cursor: pointer;
         padding: 0 30px;
         margin-left: 15px;
       }
-      }
     }
+  }
   
 
 
