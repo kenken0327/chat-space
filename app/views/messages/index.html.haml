@@ -13,19 +13,14 @@
       = link_to 'Edit', "/groups/#{@group.id}/edit"
 
   .messages
-    .message
-      .message__upper-info
-        %p.message__upper-info__talker
-          test-user
-        %p.message__upper-info__date
-          2019/10/25(thu)00:00:00
-      .message__text
-        test-text
+    = render @messages
+
   .form
-    %form.new_message{action: "/", method: ""}
+    = form_for [@group, @message] do |f|
       .input-box
-        %input.input-box__text{placeholder: "type a message", type: "text"}
-        %label.input-box__image{for: "message_image"}
-          %i.fa.fa-image
-          %input.input-box__image__file{ type: "file", id: "message_image"}
-      %input.submit-btn{ type: "submit", name: "commit", value: "Send"}
+        = f.text_field :content, class: 'input-box__text', placeholder: 'type a message'
+        .form__mask
+          = f.label :image, class: 'input-box__image' do 
+            = fa_icon 'picture-o', class: 'icon', for: 'message_image'
+            = f.file_field :image, class: 'input-box__image__file', for: 'message_image'
+      = f.submit 'Send', class: 'submit-btn'
