@@ -39,6 +39,8 @@ $(function(){
       $('.messages').animate({ 
         scrollTop: $('.messages')[0].scrollHeight
       }, 'fast');
+      $(".submit-btn").prop('disabled', false);
+      $('#message_content').val("")
     })
     .fail(function(){
     })
