@@ -1,4 +1,27 @@
 $(function(){
+
+  function buildMessage(message){
+    var image = message.image ? `<img class="message__text__image" src=${message.image}>` : "";
+    var html = `<div class="message">
+                    <div class="message__upper-info">
+                      <div class="message__upper-info__talker">
+                        ${message.user_name}
+                      </div>
+                      <div class="message__upper-info__date">
+                        ${message.created_at}
+                      </div>
+                    </div>
+                    <div class="message__text">
+                      ${message.content}
+                      <img class="message__text__image">
+                        ${message.image}
+                      </div>
+                    </div>
+                </div>`
+    return html;
+  }
+
+
   $('#new_message').on('submit', function(e){
     e.preventDefault();
     var formData = new FormData(this);
@@ -10,6 +33,13 @@ $(function(){
       dataType: 'json',
       processData: false,
       contentType: false
+    })
+    .done(function(data){
+      var html = buildMessage(data);
+      
+    })
+    .fail(function(){
+
     })
   })
 });
