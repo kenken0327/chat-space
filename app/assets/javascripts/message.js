@@ -1,7 +1,7 @@
 $(function(){
 
   function buildMessage(message){
-    var image = message.image ? `<img class="message__text__image" src=${message.image}>` : "";
+    var image = (message.image !== null) ? `<img class= "message__text__image" src="${message.image}">`: "";
     var html = `<div class="message">
                     <div class="message__upper-info">
                       <div class="message__upper-info__talker">
@@ -14,7 +14,7 @@ $(function(){
                     <div class="message__text">
                       ${message.content}
                       <img class="message__text__image">
-                        ${message.image}
+                        ${image}
                       </div>
                     </div>
                 </div>`
@@ -43,6 +43,7 @@ $(function(){
       $('#message_content').val("")
     })
     .fail(function(){
+      alert("メッセージ送信に失敗しました");
     })
   })
 });
