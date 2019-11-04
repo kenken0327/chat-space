@@ -1,6 +1,5 @@
 $(function(){
   function searchUser(user){
-
     var html = `<div class="chat-group-user clearfix">
           <p class="chat-group-user__name">${user.name}</p>
             <a class="user-search-add
@@ -9,7 +8,14 @@ $(function(){
              data-user-id= ${user.id}
              data-user-name=${user.name}>追加</a>
         </div>`
-    return html;
+        $('#user-search-result').append(html)
+  }
+  function addNoUser() {
+    let html = `
+      <div class="chat-group-user clearfix">
+        <p class="chat-group-user__name">ユーザーが見つかりません</p>
+      </div>`;
+    $("#user-search-result").append(html);
   }
 
   $("#user-search-field").on("keyup", function() {
@@ -26,13 +32,22 @@ $(function(){
       if (users.length !== 0) {
         users.forEach(function(user){
           searchUser(user);
-          var html = searchUser(user);
-          $('#user-search-result').append(html)
         });
-      };
-      })
+      } else if (input.length == 0) {
+        return false;
+      } else {
+        addNoUser();
+      }
+    })
       .fail(function() {
       alert('ユーザー検索に失敗しました');
     });
   });
 });
+$(function(){
+
+
+  $("#user-search-result").on("click", ".chat-group-user__btn--add", function(){
+    
+  })
+})
