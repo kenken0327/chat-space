@@ -8,7 +8,9 @@
       %ul.main-header__left-box__member-list
         member :
         %li.main-header__left-box__member-list__member
-          = current_user.name
+          - @group.users.each do |user|
+            = user.name
+            
     .main-header__edit-btn
       = link_to 'Edit', "/groups/#{@group.id}/edit"
 
