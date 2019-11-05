@@ -1,4 +1,4 @@
-$(function(){
+$(document).on('turbolinks:load', function(){
 
   function buildMessage(message){
     var image = (message.image !== null) ? `<img class= "message__text__image" src="${message.image}">`: "";
@@ -48,7 +48,8 @@ $(function(){
       alert("メッセージ送信に失敗しました");
     })
   })
-  var reloadMessages = function() {
+  
+  function reloadMessages() {
     //カスタムデータ属性を利用し、ブラウザに表示されている最新メッセージのidを取得
     last_message_id =  $('.message').last().data('message-id');
     $.ajax({
@@ -61,7 +62,11 @@ $(function(){
       data: {id: last_message_id}
     })
     .done(function(messages) {
-      console.log('success');
+
+      messages.forEach(function(message){
+        var insertHTML = buildMessage(message);
+        $('.messages').append(insertHTML);
+      });
     })
     .fail(function() {
       console.log('error');
