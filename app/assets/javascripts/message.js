@@ -2,7 +2,7 @@ $(document).on('turbolinks:load', function(){
 
   function buildMessage(message){
     var image = (message.image !== null) ? `<img class= "message__text__image" src="${message.image}">`: "";
-    var html = `<div class="message">
+    var html = `<div class="message" data-id = ${message.id}>
                     <div class="message__upper-info">
                       <div class="message__upper-info__talker">
                         ${message.user_name}
@@ -50,26 +50,27 @@ $(document).on('turbolinks:load', function(){
   })
   
   function reloadMessages() {
-    //カスタムデータ属性を利用し、ブラウザに表示されている最新メッセージのidを取得
-    last_message_id =  $('.message').last().data('message-id');
+    if(document.URL.match("/message")) {
+    last_message_id = $(".message:last").data('id');
     $.ajax({
-      //ルーティングで設定した通り/groups/id番号/api/messagesとなるよう文字列を書く
       url: "api/messages",
-      //ルーティングで設定した通りhttpメソッドをgetに指定
       type: 'get',
       dataType: 'json',
-      //dataオプションでリクエストに値を含める
       data: {id: last_message_id}
     })
     .done(function(messages) {
-
       messages.forEach(function(message){
         var insertHTML = buildMessage(message);
         $('.messages').append(insertHTML);
-      });
+      })
+      $('.messages').animate({ 
+        scrollTop: $('.messages')[0].scrollHeight
+      }, 'fast');
     })
     .fail(function() {
-      console.log('error');
+      alert('error');
     });
   };
+  };
+    setInterval(reloadMessages, 5000);
 });
