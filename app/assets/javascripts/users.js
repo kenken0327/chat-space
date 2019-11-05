@@ -45,7 +45,7 @@ $(document).on('turbolinks:load', function(){
   });
 });
 
-$(function(){
+$(document).on('turbolinks:load',function(){
   function appendUser(user_id, user_name){
     var html = `<div class='chat-group-user clearfix' id='chat-group-user-${user_id}'>
 					<input name='group[user_ids][]' type='hidden' value= ${user_id}>
@@ -66,7 +66,7 @@ $(function(){
   });
 });
 
-$(function(){
+$(document).on('turbolinks:load',function(){
 	$("#chat-group-users").on("click",".user-search-remove" ,function(){
 		$(this).parent().remove();
 	});
