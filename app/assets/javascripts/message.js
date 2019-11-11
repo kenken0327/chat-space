@@ -43,7 +43,7 @@ $(document).on('turbolinks:load', function(){
       }, 'fast');
       $(".submit-btn").prop('disabled', false);
       $('#message_content').val("")
-      $('#message_image').val("")
+      $('.input-box_image').val("")
     })
     .fail(function(){
       alert("メッセージ送信に失敗しました");
