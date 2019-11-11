@@ -8,5 +8,4 @@
     - if message.content.present?
       %p.message__text__content
         = message.content
-    - if message.image.present?
-    = image_tag message.image, class: 'message__text__image'
+    = image_tag message.image, class: 'message__text__image' if message.image.present?
