@@ -1,7 +1,7 @@
 $(document).on('turbolinks:load', function(){
 
   function buildMessage(message){
-     image = (message.image !== null) ? `<img class= "message__text__image" src=${message.image}>`: "";
+    var image = (message.image !== null) ? `<img class= "message__text__image" src=${message.image}>`: "";
     var html = `<div class="message" data-id = ${message.id}>
                     <div class="message__upper-info">
                       <div class="message__upper-info__talker">
@@ -43,7 +43,6 @@ $(document).on('turbolinks:load', function(){
         scrollTop: $('.messages')[0].scrollHeight
       }, 'fast');
       $(".submit-btn").prop('disabled', false);
-      $('#message_content').val("")
     })
     .fail(function(){
       alert("メッセージ送信に失敗しました");
