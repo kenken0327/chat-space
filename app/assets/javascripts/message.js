@@ -42,7 +42,8 @@ $(document).on('turbolinks:load', function(){
         scrollTop: $('.messages')[0].scrollHeight
       }, 'fast');
       $(".submit-btn").prop('disabled', false);
-      $('.input-box').val("")
+      $('#message_content').val("")
+      $('#message_image').val("")
     })
     .fail(function(){
       alert("メッセージ送信に失敗しました");
