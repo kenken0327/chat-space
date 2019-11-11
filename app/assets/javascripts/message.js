@@ -38,11 +38,11 @@ $(document).on('turbolinks:load', function(){
     .done(function(data){
       var html = buildMessage(data);
       $('.messages').append(html);
+      $('.new_message')[0].reset();
       $('.messages').animate({ 
         scrollTop: $('.messages')[0].scrollHeight
       }, 'fast');
       $(".submit-btn").prop('disabled', false);
-      $('#message_content').val("")
     })
     .fail(function(){
       alert("メッセージ送信に失敗しました");
