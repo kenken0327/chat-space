@@ -38,7 +38,7 @@ $(document).on('turbolinks:load', function(){
     .done(function(data){
       var html = buildMessage(data);
       $('.messages').append(html);
-      $('#form')[0].reset();
+      $(".form")[0].reset();
       $('.messages').animate({ 
         scrollTop: $('.messages')[0].scrollHeight
       }, 'fast');
