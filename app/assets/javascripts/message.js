@@ -61,12 +61,14 @@ $(document).on('turbolinks:load', function(){
       })
       .done(function(messages) {
         messages.forEach(function(message){
-          var insertHTML = buildMessage(message);
+          if (message.id > last_message_id ) {
+           insertHTML += buildMessage(message);
+          }
           $('.messages').append(insertHTML);
+          $('.messages').animate({ 
+            scrollTop: $('.messages')[0].scrollHeight
+          }, 'fast');
         })
-        $('.messages').animate({ 
-          scrollTop: $('.messages')[0].scrollHeight
-        }, 'fast');
       })
       .fail(function() {
         alert('error');
